@@ -28,7 +28,7 @@ const Home = () => {
       await axios.get(process.env.REACT_APP_DJANGO_API_URL+'/api/api/?id='+id)
       .then(res1 => {
         setSections(res1.data);
-        axios.get(process.env.REACT_APP_DJANGO_API_URL+'/api/stages/')
+        axios.get(process.env.REACT_APP_DJANGO_API_URL+'/api/stages/?id='+id)
         .then(res2 => {
           setStages(res2.data);
         })
@@ -36,7 +36,7 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className='m-8'>
       <ErrorModal isVisibled={true}/>
       <span className="border border-red-500 bg-red-300">{error.message}</span>
       <div className="flex">

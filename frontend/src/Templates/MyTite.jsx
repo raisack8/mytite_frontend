@@ -16,7 +16,7 @@ const MyTite = () => {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex m-8">
         <div style={{"paddingTop":"4.0rem"}}>
           <TimeLine wholeTime={data.wholeTime}/>
         </div>

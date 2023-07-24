@@ -44,14 +44,25 @@ const Section = (props) => {
         </div>
       );
     } else if (index === 1) {
-      return (
-        <div className={`mx-2 pt-1 ${clickFlg ? choiced : notChoise}`} 
+      if(index === repeatCount-1){
+        return (
+          <div className={`mx-2 pt-2 rounded-b-md ${clickFlg ? choiced : notChoise}`} 
           key={index}>
-          <div className='mx-2'>
+          <div className='mx-2 text-sm whitespace-nowrap'>
             {section.artist_name}
           </div>
         </div>
-      );
+        );
+      }else{
+        return (
+          <div className={`mx-2 pt-2 ${clickFlg ? choiced : notChoise}`} 
+          key={index}>
+          <div className='mx-2 text-sm whitespace-nowrap'>
+            {section.artist_name}
+          </div>
+        </div>
+        );
+      }
     } else if (index === repeatCount-1) {
       return (
         <div className={`mx-2 pt-1 rounded-b-md ${clickFlg ? choiced : notChoise}`} 
