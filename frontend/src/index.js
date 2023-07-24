@@ -1,17 +1,33 @@
-import React from 'react';
+import React,  {createContext} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+// useContext 選択しているセクションIDを配列で保持する
+const contextData = {
+  sectionData: [],
+  setSection: (val) => {
+    // sectionDataの中にvalが存在しなかったら追加、存在していたら削除
+    if (contextData.sectionData.includes(val)) {
+      contextData.sectionData = contextData.sectionData.filter(
+        item => item !== val
+      );
+    } else {
+      contextData.sectionData.push(val);
+    }
+  }
+};
+const MyContext = createContext(contextData);
+
+// public>index.htmlに紐づいている
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // 厳格。バグを厳しく見てくれる
+  <MyContext.Provider value={contextData}>
+    <React.Fragment>
+      <App />
+    </React.Fragment>
+  </MyContext.Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export default MyContext;
