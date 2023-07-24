@@ -7,6 +7,12 @@ const SelectFes = () => {
     <div className='text-center'>
       <div className='mt-20'>
 
+      <div className='m-4 w-1/3 mx-auto border border-slate-500'>
+          <Link to="https://mytite-backend-cnszbfeguq-uc.a.run.app/admin">
+            ADMIN
+          </Link>
+        </div>
+
        <div className='m-4 w-1/3 mx-auto border border-slate-500'>
           <Link to="/tite/1">
             TEST
