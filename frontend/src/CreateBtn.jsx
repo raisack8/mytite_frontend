@@ -13,7 +13,7 @@ const CreateBtn = ({wholeTime}) => {
         id: contextData.sectionData
       };
       // POSTリクエストを送信
-      const response = await axios.post('http://127.0.0.1:8000/api/api/', dataToSend);
+      const response = await axios.post(process.env.REACT_APP_DJANGO_API_URL+'/api/api/', dataToSend);
       console.log(response)
       // 1つも選択していなかったらエラー
       if(Object.keys(response.data.message.myTiteSections).length===0){

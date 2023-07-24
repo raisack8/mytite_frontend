@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 import ErrorModal from '../CmnComponents/ErrorModal'
 import TimeLine from '../TiteComponents/TimeLine'
 import TimeTableArea from '../TiteComponents/TimeTableArea'
 import CreateBtn from '../CreateBtn'
-import MyContext from '..'
 import axios from "axios"
 
 const Home = () => {
+  const { id } = useParams();
 
   // Sectionの値
   const[sections, setSections] = useState([]);
@@ -21,13 +22,13 @@ const Home = () => {
     getPosts();
   }, []);
 
+  const iFesId = id
   // DjangoのAPIと通信するメソッド
-  function getPosts() {
-      axios.get('http://127.0.0.1:8000/api/api/')
+  const getPosts = async () => {
+      await axios.get(process.env.REACT_APP_DJANGO_API_URL+'/api/api/?id='+id)
       .then(res1 => {
         setSections(res1.data);
-
-        axios.get('http://127.0.0.1:8000/api/stages/')
+        axios.get(process.env.REACT_APP_DJANGO_API_URL+'/api/stages/')
         .then(res2 => {
           setStages(res2.data);
         })
