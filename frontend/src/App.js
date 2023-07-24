@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React Gitが反映されているかな？13:59テスト
+          Learn React Gitが反映されているかな？14:26テスト
         </a>
       </header>
     </div>
