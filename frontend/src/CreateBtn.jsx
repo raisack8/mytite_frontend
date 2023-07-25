@@ -47,7 +47,6 @@ const CreateBtn = ({wholeTime}) => {
         onClick={()=>createMyTite()}>
         <span className='p-2 text-xl'>GO</span>
       </button>
-      <button >Push</button>
     </div>
   );
 };

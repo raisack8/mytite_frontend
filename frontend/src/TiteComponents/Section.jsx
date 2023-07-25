@@ -3,13 +3,16 @@ import React, { useState,useContext } from 'react';
 import MyContext from '..';
 
 const Section = (props) => {
-  const { section } = props;
+  const { section, sectionClickFlag } = props;
 
   const [clickFlg, setClickFlg] = useState(false);
   const contextVal = useContext(MyContext)
 
   // Sectionをクリックしたときの処理
   const toggleClickFlg = (id) => {
+    if(!sectionClickFlag){
+      return;
+    }
     setClickFlg(!clickFlg);
     // Contextに値を登録する
     contextVal.setSection(id);
@@ -36,9 +39,9 @@ const Section = (props) => {
   const repeatedElements = Array.from({ length: repeatCount }, (_, index) => {
     if (index === 0) {
       return (
-        <div className={`mx-2 mt-1 rounded-t-md ${clickFlg ? choiced : notChoise}`} 
+        <div className={`mx-2 mt-1 pt-1 rounded-t-md ${clickFlg ? choiced : notChoise}`} 
           key={index}>
-          <div className='mx-1'>
+          <div className='mx-1 text-sm'>
             <p>{startTime}~{endTimeString}</p>
           </div>
         </div>
@@ -70,6 +73,15 @@ const Section = (props) => {
           <br />
         </div>
       );
+    } else if (index === 2 && section.other1) {
+        return (
+          <div className={`mx-2 pt-3 ${clickFlg ? choiced : notChoise}`} 
+          key={index}>
+          <div className='mx-2 text-xs whitespace-nowrap'>
+            {section.other1}
+          </div>
+        </div>
+        );
     } else {
       return (
         <div className={`mx-2 pt-1 ${clickFlg ? choiced : notChoise}`} key={index}>

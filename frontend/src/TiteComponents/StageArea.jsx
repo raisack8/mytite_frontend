@@ -5,7 +5,7 @@ import {timeConvert} from '../utils'
 
 
 const StageArea = (props) => {
-  const { stageInfo, sections, wholeTime } = props;
+  const { stageInfo, sections, wholeTime, sectionClickFlag } = props;
   
   // 時間オブジェクト配列を作る処理
   const  createTimeList=(startTime, endTime)=> {
@@ -76,7 +76,11 @@ const StageArea = (props) => {
 
               allottedTime = allottedTime-5;
               return(
-                <Section section={sections[sectionIndex]} key={uuidv4()}/>
+                  <Section 
+                    section={sections[sectionIndex]} 
+                    key={uuidv4()}
+                    sectionClickFlag={sectionClickFlag}
+                    />
                 )
             }
           }

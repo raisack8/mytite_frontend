@@ -2,7 +2,7 @@ import React from 'react'
 import StageArea from './StageArea'
 import '../styles/custom.css';
 
-const TimeTableArea = ({stages,sections,wholeTime}) => {
+const TimeTableArea = ({stages,sections,wholeTime,sectionClickFlag}) => {
 
   // 画面表示時にステージ毎のSectionに分ける
   const distributeSection=()=>{
@@ -24,6 +24,7 @@ const TimeTableArea = ({stages,sections,wholeTime}) => {
           sections={distributeSectionDict[stage.id]} 
           wholeTime={wholeTime}
           key={stage.id}
+          sectionClickFlag={sectionClickFlag}
         />
       )}
     </div>

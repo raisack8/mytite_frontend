@@ -20,7 +20,12 @@ const MyTite = () => {
         <div style={{"paddingTop":"4.0rem"}}>
           <TimeLine wholeTime={data.wholeTime}/>
         </div>
-        <TimeTableArea stages={stageTest} sections={data.data.message.myTiteSections} wholeTime={data.wholeTime}/>
+        <TimeTableArea 
+          stages={stageTest} 
+          sections={data.data.message.myTiteSections} 
+          wholeTime={data.wholeTime}
+          sectionClickFlag={false}
+        />
 
       </div>
     </>

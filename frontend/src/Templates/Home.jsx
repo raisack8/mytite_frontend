@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import ErrorModal from '../CmnComponents/ErrorModal'
 import TimeLine from '../TiteComponents/TimeLine'
 import TimeTableArea from '../TiteComponents/TimeTableArea'
 import CreateBtn from '../CreateBtn'
 import axios from "axios"
+import MyContext from '..';
 
 const Home = () => {
   const { id } = useParams();
@@ -16,11 +17,15 @@ const Home = () => {
   const[error, setError] = useState('')
   const wholeTime = {
     "start":new Date('1899-12-30T09:00:00'),
-    "end":new Date('1899-12-30T21:00:00'),
+    "end":new Date('1899-12-30T21:30:00'),
   }
   useEffect(() => {
     getPosts();
   }, []);
+
+  // Homeコンポーネントが読み込まれた際、useContextの値をリセット
+  let contextData = useContext(MyContext)
+  contextData.sectionData = []
 
   const iFesId = id
   // DjangoのAPIと通信するメソッド
@@ -43,7 +48,12 @@ const Home = () => {
         <div style={{"paddingTop":"4.0rem"}}>
           <TimeLine wholeTime={wholeTime}/>
         </div>
-        <TimeTableArea stages={stages} sections={sections} wholeTime={wholeTime}/>
+        <TimeTableArea 
+          stages={stages} 
+          sections={sections} 
+          wholeTime={wholeTime}
+          sectionClickFlag={true}
+        />
       </div>
       <div className="fixed bottom-12 right-12">
         <CreateBtn wholeTime={wholeTime}></CreateBtn>
