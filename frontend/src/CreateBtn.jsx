@@ -25,7 +25,7 @@ const CreateBtn = ({wholeTime}) => {
         alert(response.data.message.errorMsg)
         return;
       }
-      navigate('/test',{state: {
+      navigate('/mytite',{state: {
         'data':response.data,
         'wholeTime':wholeTime
       }});

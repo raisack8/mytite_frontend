@@ -6,6 +6,7 @@ import TimeTableArea from '../TiteComponents/TimeTableArea'
 import CreateBtn from '../CreateBtn'
 import axios from "axios"
 import MyContext from '..';
+import SideDrawer from '../CmnComponents/SideDrawer'
 
 const Home = () => {
   const { id } = useParams();
@@ -42,8 +43,7 @@ const Home = () => {
 
   return (
     <div className='m-8'>
-      <ErrorModal isVisibled={true}/>
-      <span className="border border-red-500 bg-red-300">{error.message}</span>
+      <SideDrawer></SideDrawer>
       <div className="flex">
         <div style={{"paddingTop":"4.0rem"}}>
           <TimeLine wholeTime={wholeTime}/>

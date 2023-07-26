@@ -10,13 +10,9 @@ function App() {
   return (
     <Router>
       <Routes>
-
-
-        {/* <div className="p-16"> */}
           <Route exact path="/" element={<SelectFes/>}/>
           <Route path="/tite/:id" element={<Home/>} />
-          <Route path="/test" element={<MyTite/>} />
-        {/* </div> */}
+          <Route path="/mytite" element={<MyTite/>} />
       </Routes>
     </Router>
   );

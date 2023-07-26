@@ -2,6 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom';
 import TimeLine from '../TiteComponents/TimeLine';
 import TimeTableArea from '../TiteComponents/TimeTableArea';
+import SideDrawer from '../CmnComponents/SideDrawer'
 
 const MyTite = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ const MyTite = () => {
 
   return (
     <>
+      <SideDrawer></SideDrawer>
       <div className="flex m-8">
         <div style={{"paddingTop":"4.0rem"}}>
           <TimeLine wholeTime={data.wholeTime}/>
