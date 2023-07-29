@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import ErrorModal from '../CmnComponents/ErrorModal'
 import TimeLine from '../TiteComponents/TimeLine'
 import TimeTableArea from '../TiteComponents/TimeTableArea'
-import CreateBtn from '../CreateBtn'
+import CreateBtn from '../CmnComponents/CreateBtn'
+import SideDrawer from '../CmnComponents/SideDrawer'
 import axios from "axios"
 import MyContext from '..';
-import SideDrawer from '../CmnComponents/SideDrawer'
 
 const Home = () => {
   const { id } = useParams();
@@ -42,23 +41,25 @@ const Home = () => {
   }
 
   return (
-    <div className='m-8'>
+    <>
       <SideDrawer></SideDrawer>
-      <div className="flex">
-        <div style={{"paddingTop":"4.0rem"}}>
-          <TimeLine wholeTime={wholeTime}/>
+      <div className='m-8'>
+        <div className="flex">
+          <div style={{"paddingTop":"4.0rem"}}>
+            <TimeLine wholeTime={wholeTime}/>
+          </div>
+          <TimeTableArea 
+            stages={stages} 
+            sections={sections} 
+            wholeTime={wholeTime}
+            sectionClickFlag={true}
+          />
         </div>
-        <TimeTableArea 
-          stages={stages} 
-          sections={sections} 
-          wholeTime={wholeTime}
-          sectionClickFlag={true}
-        />
+        <div className="fixed bottom-12 right-12">
+          <CreateBtn wholeTime={wholeTime}></CreateBtn>
+        </div>
       </div>
-      <div className="fixed bottom-12 right-12">
-        <CreateBtn wholeTime={wholeTime}></CreateBtn>
-      </div>
-    </div>
+    </>
   )
 }
 

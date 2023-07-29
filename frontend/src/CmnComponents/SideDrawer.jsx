@@ -1,36 +1,36 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import MyContext from '..';
 
 const MenuComponent = () => {
+  const contextData = useContext(MyContext)
+  const navigate  = useNavigate();
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
-  const menuButtonStyle = {
-    position: 'fixed',
-    top: '20px',
-    right: '20px',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    border: 'none',
-    padding: '8px 16px',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  };
-
   const menuContentStyle = {
     position: 'fixed',
-    top: '2rem',
-    right: isMenuOpen ? '0' : '-74%',
-    width: '80%',
+    top: '10vw',
+    right: isMenuOpen ? '0' : '-75vw',
+    width: '80vw',
     transition: 'right 0.5s ease',
   };
 
   const menuItemStyle = {
     marginBottom: '5px',
   };
+
+  const logout = () => {
+    contextData.loginFlag = false
+    contextData.userid = null
+    contextData.username = ''
+    
+    navigate('/');
+  };
+
 
   return (
     <div>
@@ -43,7 +43,16 @@ const MenuComponent = () => {
         <div className='bg-gray-200 pl-8 text-left w-full rounded-bl shadow-xl'>
           <ul className='d-none py-3'>
           
-            <li style={menuItemStyle} className="text-slate-400">ログイン</li>
+            <li style={menuItemStyle}>
+              {contextData.loginFlag === false &&      
+                <Link to="/signin">
+                  ログイン
+                </Link>
+                }
+              {contextData.loginFlag === true &&      
+                <p>ようこそ！{contextData.username}さん</p>
+                }
+            </li>
             <li style={menuItemStyle}>
               <Link to="/">
                 トップメニュー
@@ -59,7 +68,10 @@ const MenuComponent = () => {
             <li style={menuItemStyle} className='pl-6 text-slate-400'>スロット2</li>
             <li style={menuItemStyle} className='pl-6 text-slate-400'>スロット3</li>
             <li style={menuItemStyle} className="text-slate-400">設定</li>
-            <li style={menuItemStyle} className="text-slate-400">ログアウト</li>
+            <li style={menuItemStyle} onClick={()=>logout()}
+              className='cursor-pointer'>
+              ログアウト
+            </li>
           </ul>
         </div>
       </div>

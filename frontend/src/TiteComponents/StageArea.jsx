@@ -30,7 +30,7 @@ const StageArea = (props) => {
       // hh:mmの形式に合わせている
       let dataStr = timeConvert(updatedDateObj);
       timeList.map((time,index)=>{
-        if(time.time==dataStr){
+        if(time.time===dataStr){
           sec.flag = true;
           orgTimeList[index].flag=true
         }

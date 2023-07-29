@@ -9,10 +9,10 @@ const MyTite = () => {
   const data = location.state;
 
   const stageTest = [
-    {id: 0, name: 'MyTite1', place: 'お台場', color: '#999999'},
-    {id: 1, name: 'MyTite2', place: 'お台場', color: '#999999'},
+    {id: 0, name: 'MyTite1', place: 'お台場', color: '#777777'},
+    {id: 1, name: 'MyTite2', place: 'お台場', color: '#888888'},
     {id: 2, name: 'MyTite3', place: 'お台場', color: '#999999'},
-    {id: 3, name: 'MyTite4', place: 'お台場', color: '#999999'},
+    {id: 3, name: 'MyTite4', place: 'お台場', color: '#AAAAAA'},
   ]
 
   return (

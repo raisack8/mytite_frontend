@@ -15,7 +15,10 @@ const contextData = {
     } else {
       contextData.sectionData.push(val);
     }
-  }
+  },
+  loginFlag: false,
+  userid: null,
+  username: '',
 };
 const MyContext = createContext(contextData);
 

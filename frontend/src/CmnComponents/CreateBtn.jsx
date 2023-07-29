@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import MyContext from '.';
+import MyContext from '..';
 import axios from 'axios';
 import { useNavigate  } from 'react-router-dom';
 
 const CreateBtn = ({wholeTime}) => {
 
   const contextData = useContext(MyContext)
-  const navigate  = useNavigate ();
+  const navigate  = useNavigate();
   const createMyTite=async()=>{
     try {
       const dataToSend = {

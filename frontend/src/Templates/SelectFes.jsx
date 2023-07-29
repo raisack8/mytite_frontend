@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Route, Router, Routes } from 'react-router-dom'
+import { Link, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import SideDrawer from '../CmnComponents/SideDrawer'
 
