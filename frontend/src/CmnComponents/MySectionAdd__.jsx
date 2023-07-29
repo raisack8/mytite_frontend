@@ -3,12 +3,12 @@ import MyContext from '..';
 import axios from 'axios';
 import { useNavigate, useParams  } from 'react-router-dom';
 
-const CreateBtn = ({wholeTime}) => {
+const MySectionAdd = ({wholeTime}) => {
 
   const contextData = useContext(MyContext)
   const navigate  = useNavigate();
   const { id } = useParams();
-  console.log(id)
+
   const createMyTite=async()=>{
     try {
       let userid = localStorage.getItem('userid');
@@ -16,11 +16,10 @@ const CreateBtn = ({wholeTime}) => {
         id: contextData.sectionData,
         fes_id: id,
         user_id: userid,
-        my_sec_id: []
       };
       // POSTリクエストを送信
       const response = await axios.post(
-        process.env.REACT_APP_DJANGO_API_URL+'/api/api/', 
+        process.env.REACT_APP_DJANGO_API_URL+'/api/my_section_add/', 
         dataToSend
         );
       console.log(response)
@@ -34,7 +33,7 @@ const CreateBtn = ({wholeTime}) => {
         alert(response.data.message.errorMsg)
         return;
       }
-      navigate('/mytite/'+id,{state: {
+      navigate('/mytite',{state: {
         'data':response.data,
         'wholeTime':wholeTime,
       }});
@@ -54,11 +53,11 @@ const CreateBtn = ({wholeTime}) => {
           font-medium rounded-full text-sm p-2.5 text-center 
           inline-flex items-center"
         onClick={()=>createMyTite()}>
-        <span className='p-2 text-xl'>GO</span>
+        <span className='p-2 text-xl'>ADD</span>
       </button>
     </div>
   );
 };
 
 
-export default CreateBtn;
+export default MySectionAdd;

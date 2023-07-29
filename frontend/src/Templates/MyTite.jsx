@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import TimeLine from '../TiteComponents/TimeLine';
 import TimeTableArea from '../TiteComponents/TimeTableArea';
 import SideDrawer from '../CmnComponents/SideDrawer'
+import MyTiteSave from '../CmnComponents/MyTiteSave'
+import MySectionAddModal from '../CmnComponents/MySectionAddModal'
 
 const MyTite = () => {
   const location = useLocation();
@@ -28,7 +30,12 @@ const MyTite = () => {
           wholeTime={data.wholeTime}
           sectionClickFlag={false}
         />
-
+        <div className="fixed bottom-36 right-12">
+          <MySectionAddModal ></MySectionAddModal>
+        </div>
+        <div className="fixed bottom-12 right-12">
+          <MyTiteSave wholeTime={data.wholeTime}></MyTiteSave>
+        </div>
       </div>
     </>
   )

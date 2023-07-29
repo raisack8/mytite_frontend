@@ -8,11 +8,6 @@ const SelectFes = () => {
     <div className='text-center'>
       <SideDrawer></SideDrawer>
       <div className='mt-20'>
-        <div className='m-4 w-4/5 mx-auto border border-slate-500'>
-          <Link to="https://mytite-backend-cnszbfeguq-uc.a.run.app/admin">
-            ADMIN
-          </Link>
-        </div>
 
        <div className='m-4 w-4/5 mx-auto border border-slate-500'>
           <Link to="/tite/1">
