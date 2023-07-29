@@ -67,9 +67,9 @@ const Register = (props) => {
         return;
       }
       // statusOKだったらトップ画面に遷移
-      contextData.loginFlag = true
-      contextData.userid = response.data.id
-      contextData.username = response.data.username
+      localStorage.setItem('loginFlag', true);
+      localStorage.setItem('userid', response.data.id);
+      localStorage.setItem('username', response.data.username);
       
       navigate('/');
     } catch (error) {

@@ -22,21 +22,21 @@ const SelectFes = () => {
 
         <div className='m-4 w-4/5 mx-auto border border-slate-500'>
           <Link to="/tite/2">
-            <img src={process.env.PUBLIC_URL + '/resources/tif230804.jpg'} 
+            <img src={process.env.PUBLIC_URL + '/resources/tif/tif230804.jpg'} 
               alt="TIF2023 0804" />
           </Link>
         </div>
 
         <div className='m-4 w-4/5 mx-auto border border-slate-500'>
           <Link to="/tite/3">
-            <img src={process.env.PUBLIC_URL + '/resources/tif230805.jpg'} 
+            <img src={process.env.PUBLIC_URL + '/resources/tif/tif230805.jpg'} 
               alt="TIF2023 0805" />
           </Link>
         </div>
 
         <div className='m-4 w-4/5 mx-auto border border-slate-500'>
           <Link to="/tite/4">
-            <img src={process.env.PUBLIC_URL + '/resources/tif230806.jpg'} 
+            <img src={process.env.PUBLIC_URL + '/resources/tif/tif230806.jpg'} 
               alt="TIF2023 0806" />
           </Link>
         </div>

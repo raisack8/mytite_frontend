@@ -24,13 +24,15 @@ const MenuComponent = () => {
   };
 
   const logout = () => {
-    contextData.loginFlag = false
-    contextData.userid = null
-    contextData.username = ''
-    
+    localStorage.removeItem('loginFlag');
+    localStorage.removeItem('userid');
+    localStorage.removeItem('username');
+    setMenuOpen(false)
     navigate('/');
   };
 
+  let loginFlag = localStorage.getItem('loginFlag');
+  let username = localStorage.getItem('username');
 
   return (
     <div>
@@ -44,13 +46,13 @@ const MenuComponent = () => {
           <ul className='d-none py-3'>
           
             <li style={menuItemStyle}>
-              {contextData.loginFlag === false &&      
+              {loginFlag !== 'true' &&      
                 <Link to="/signin">
                   ログイン
                 </Link>
                 }
-              {contextData.loginFlag === true &&      
-                <p>ようこそ！{contextData.username}さん</p>
+              {loginFlag === 'true' &&      
+                <p className='font-bold'>ようこそ！{username}さん</p>
                 }
             </li>
             <li style={menuItemStyle}>
@@ -68,10 +70,12 @@ const MenuComponent = () => {
             <li style={menuItemStyle} className='pl-6 text-slate-400'>スロット2</li>
             <li style={menuItemStyle} className='pl-6 text-slate-400'>スロット3</li>
             <li style={menuItemStyle} className="text-slate-400">設定</li>
-            <li style={menuItemStyle} onClick={()=>logout()}
-              className='cursor-pointer'>
-              ログアウト
-            </li>
+            {loginFlag === 'true' &&      
+              <li style={menuItemStyle} onClick={()=>logout()}
+                className='cursor-pointer'>
+                ログアウト
+              </li>
+              }
           </ul>
         </div>
       </div>
