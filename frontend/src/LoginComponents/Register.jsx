@@ -70,7 +70,7 @@ const Register = (props) => {
       localStorage.setItem('loginFlag', true);
       localStorage.setItem('userid', response.data.id);
       localStorage.setItem('username', response.data.username);
-      
+
       navigate('/');
     } catch (error) {
       alert("システムエラーが発生しました")
@@ -80,7 +80,7 @@ const Register = (props) => {
 
   return (
     <>
-      <div className='p-8 text-xl'>
+      <div className='py-8 px-4 text-xl'>
         <p className='p- flex justify-center'>
           新規登録
         </p>

@@ -69,7 +69,7 @@ const Login = (props) => {
 
   return (
     <>
-      <div className='p-8 text-xl'>
+      <div className='py-8 px-4 text-xl'>
         <p className='p-2 flex justify-center'>
           ログイン
         </p>
