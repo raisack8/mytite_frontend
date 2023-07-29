@@ -42,7 +42,22 @@ const Section = (props) => {
         <div className={`mx-2 mt-1 pt-1 rounded-t-md ${clickFlg ? choiced : notChoise}`} 
           key={index}>
           <div className='mx-1 text-sm'>
-            <p>{startTime}~{endTimeString}</p>
+            <div className='flex'>
+              <p>{startTime}~{endTimeString}</p>
+              {section.stage_img_url && (
+              <div className='ml-auto mr-0'>
+                <div className='w-20 h-4'>
+                  <img src={process.env.PUBLIC_URL + section.stage_img_url} 
+                    alt={section.name}/>
+                </div>
+              </div>)}
+              {!section.stage_img_url && (
+              <div className='ml-auto mr-0'>
+                <div className='w-20 h-4'>
+                  <p>{section.name}</p>
+                </div>
+              </div>)}
+            </div>
           </div>
         </div>
       );

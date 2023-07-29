@@ -1,19 +1,25 @@
 import React, { useContext } from 'react';
 import MyContext from '..';
 import axios from 'axios';
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate, useParams  } from 'react-router-dom';
 
 const CreateBtn = ({wholeTime}) => {
 
   const contextData = useContext(MyContext)
   const navigate  = useNavigate();
+  const { id } = useParams();
+
   const createMyTite=async()=>{
     try {
       const dataToSend = {
-        id: contextData.sectionData
+        id: contextData.sectionData,
+        stage_id: id
       };
       // POSTリクエストを送信
-      const response = await axios.post(process.env.REACT_APP_DJANGO_API_URL+'/api/api/', dataToSend);
+      const response = await axios.post(
+        process.env.REACT_APP_DJANGO_API_URL+'/api/api/', 
+        dataToSend
+        );
       console.log(response)
       // 1つも選択していなかったらエラー
       if(Object.keys(response.data.message.myTiteSections).length===0){
@@ -27,7 +33,7 @@ const CreateBtn = ({wholeTime}) => {
       }
       navigate('/mytite',{state: {
         'data':response.data,
-        'wholeTime':wholeTime
+        'wholeTime':wholeTime,
       }});
 
     } catch (error) {

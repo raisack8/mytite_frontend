@@ -52,10 +52,15 @@ const StageArea = (props) => {
         className='w-60 h-full'
         style={{backgroundColor:stageInfo.color}}>
         <div key={uuidv4()} className='flex h-16 items-center justify-center text-white text-white-outline text-4xl font-extrabold'>
-          {/* {stageInfo.name} */}
+          {stageInfo.stage_image_path1 && (
           <div className='p-4'>
-            <img src={process.env.PUBLIC_URL + stageInfo.stage_image_path1}></img>
-          </div>
+            <img src={process.env.PUBLIC_URL + stageInfo.stage_image_path1}
+              alt={stageInfo.name}
+              ></img>
+          </div>)}
+          {!stageInfo.stage_image_path1 && (
+            <p>{stageInfo.name}</p>
+          )}
         </div>
         {timeList.map((time)=>{
           if(!time.flag){
