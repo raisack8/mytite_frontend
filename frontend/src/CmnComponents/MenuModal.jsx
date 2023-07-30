@@ -26,10 +26,10 @@ export default function MenuModal() {
   return (
     <div>
       <button type="button" 
-        className="text-blue-700 border border-blue-700 
-          hover:bg-blue-700 hover:text-white 
+        className="border border-blue-500 bg-blue-500 text-white 
+          hover:bg-blue-700
           focus:ring-4 focus:outline-none focus:ring-blue-300 
-          font-medium rounded-full text-sm p-2.5 text-center 
+          font-medium rounded-full text-sm p-5 text-center 
           inline-flex items-center"
         onClick={()=>handleOpen()}>
         <span className='p-2 text-xl'>MENU</span>
