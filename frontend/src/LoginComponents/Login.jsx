@@ -58,7 +58,7 @@ const Login = (props) => {
       localStorage.setItem('loginFlag', true);
       localStorage.setItem('userid', response.data.id);
       localStorage.setItem('username', response.data.username);
-      
+      contextData.myTiteList = response.data.mytitelist
       navigate('/');
     } catch (error) {
       alert("システムエラーが発生しました")

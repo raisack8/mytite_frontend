@@ -4,8 +4,8 @@ import MyContext from '..';
 
 
 const MenuDetail = () => {
+  const contextData = useContext(MyContext)
   const navigate  = useNavigate();
-  const [isMenuOpen, setMenuOpen] = useState(false);
   const menuItemStyle = {
     marginBottom: '5px',
   };
@@ -14,7 +14,6 @@ const MenuDetail = () => {
     localStorage.removeItem('loginFlag');
     localStorage.removeItem('userid');
     localStorage.removeItem('username');
-    setMenuOpen(false)
     navigate('/');
   };
 
@@ -48,9 +47,15 @@ const MenuDetail = () => {
           </p>
         </li>
         <div>
-          <li className='py-1 pl-6 text-slate-400'>スロット1</li>
-          <li className='py-1 pl-6 text-slate-400'>スロット2</li>
-          <li className='py-1 pl-6 text-slate-400'>スロット3</li>
+          <ul>
+            {contextData.myTiteList.map((number, index) => (
+              <li key={number} className='py-1 pl-6 text-slate-400'>
+                <Link to={`/${number}`}>
+                  スロット{index + 1}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
         <li className="text-slate-400">設定</li>
         {loginFlag === 'true' &&      

@@ -16,9 +16,9 @@ const contextData = {
       contextData.sectionData.push(val);
     }
   },
-  loginFlag: false,
-  userid: null,
-  username: '',
+  orgMySectionList: [],
+  orgSectionList: [],
+  myTiteList:[],
 };
 const MyContext = createContext(contextData);
 

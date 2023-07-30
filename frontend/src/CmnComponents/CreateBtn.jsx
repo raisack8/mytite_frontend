@@ -34,6 +34,8 @@ const CreateBtn = ({wholeTime}) => {
         alert(response.data.message.errorMsg)
         return;
       }
+      contextData.orgMySectionList = response.data.message.orgMySectionList
+      contextData.orgSectionList = response.data.message.orgSectionList
       navigate('/mytite/'+id,{state: {
         'data':response.data,
         'wholeTime':wholeTime,
