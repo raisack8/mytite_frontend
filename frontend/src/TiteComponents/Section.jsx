@@ -82,12 +82,24 @@ const Section = (props) => {
         );
       }
     } else if (index === repeatCount-1) {
-      return (
-        <div className={`mx-2 pt-1 rounded-b-md ${clickFlg ? choiced : notChoise}`} 
+      if(section.other1 && index === 2){
+        return (
+          <div className={`mx-2 pt-1 rounded-b-md ${clickFlg ? choiced : notChoise}`} 
           key={index}>
-          <br />
+          <div className='mx-2 pb-2 text-xs whitespace-nowrap'>
+            {section.other1}
+          </div>
         </div>
-      );
+        );
+      }else{
+        return (
+          <div className={`mx-2 pt-1 rounded-b-md ${clickFlg ? choiced : notChoise}`} 
+            key={index}>
+            <br />
+          </div>
+        );
+      }
+
     } else if (index === 2 && section.other1) {
         return (
           <div className={`mx-2 pt-3 ${clickFlg ? choiced : notChoise}`} 
