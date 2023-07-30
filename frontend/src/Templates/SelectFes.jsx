@@ -2,11 +2,15 @@ import React from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import SideDrawer from '../CmnComponents/SideDrawer'
+import MenuModal from "../CmnComponents/MenuModal"
 
 const SelectFes = () => {
   return (
+    <>
+    <div className="fixed top-12 right-12">
+      <MenuModal></MenuModal>
+    </div>
     <div className='text-center'>
-      <SideDrawer></SideDrawer>
       <div className='mt-20'>
 
        <div className='m-4 w-4/5 mx-auto border border-slate-500'>
@@ -41,7 +45,7 @@ const SelectFes = () => {
         <Route path="/tite/:id" component={Home} />
       </Routes>
     </div>
-    
+  </>
   )
 }
 

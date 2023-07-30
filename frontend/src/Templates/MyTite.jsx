@@ -5,6 +5,7 @@ import TimeTableArea from '../TiteComponents/TimeTableArea';
 import SideDrawer from '../CmnComponents/SideDrawer'
 import MyTiteSave from '../CmnComponents/MyTiteSave'
 import MySectionAddModal from '../CmnComponents/MySectionAddModal'
+import MenuModal from "../CmnComponents/MenuModal"
 
 const MyTite = () => {
   const location = useLocation();
@@ -19,7 +20,9 @@ const MyTite = () => {
 
   return (
     <>
-      <SideDrawer></SideDrawer>
+      <div className="fixed top-12 right-12">
+        <MenuModal></MenuModal>
+      </div>
       <div className="flex m-8">
         <div style={{"paddingTop":"4.0rem"}}>
           <TimeLine wholeTime={data.wholeTime}/>

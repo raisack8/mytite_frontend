@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import TimeLine from '../TiteComponents/TimeLine'
 import TimeTableArea from '../TiteComponents/TimeTableArea'
 import CreateBtn from '../CmnComponents/CreateBtn'
-import SideDrawer from '../CmnComponents/SideDrawer'
+import MenuModal from '../CmnComponents/MenuModal'
 import axios from "axios"
 import MyContext from '..';
 
@@ -42,7 +42,9 @@ const Home = () => {
 
   return (
     <>
-      <SideDrawer></SideDrawer>
+      <div className="fixed top-12 right-12">
+        <MenuModal></MenuModal>
+      </div>
       <div className='m-8'>
         <div className="flex">
           <div style={{"paddingTop":"4.0rem"}}>
