@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import MySectionDetail from '../MySection/MySectionDetail';
+import MySectionList from '../MySection/MySectionList';
 
 const style = {
   position: 'absolute',
@@ -17,10 +18,11 @@ const style = {
   p: 4,
 };
 
-export default function MySectionAddModal() {
+export default function MySectionAddModal({wholeTime}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [pageFlag, setPageFlag] = React.useState(0);
 
   return (
     <div>
@@ -40,7 +42,13 @@ export default function MySectionAddModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <MySectionDetail></MySectionDetail>
+
+          {pageFlag === 0 && 
+            <MySectionList setPageFlag={setPageFlag} wholeTime={wholeTime} setOpen={setOpen}/>
+          }
+          {pageFlag === 1 && 
+            <MySectionDetail setPageFlag={setPageFlag} wholeTime={wholeTime} setOpen={setOpen}/>
+          }
         </Box>
       </Modal>
     </div>

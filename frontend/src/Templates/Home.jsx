@@ -6,10 +6,11 @@ import CreateBtn from '../CmnComponents/CreateBtn'
 import MenuModal from '../CmnComponents/MenuModal'
 import axios from "axios"
 import MyContext from '..';
+import {localStorageReset} from "../utils"
 
 const Home = () => {
   const { id } = useParams();
-
+  localStorageReset();
   // Sectionの値
   const[sections, setSections] = useState([]);
   // Stagesの値

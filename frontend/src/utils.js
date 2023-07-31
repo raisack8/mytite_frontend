@@ -20,3 +20,9 @@ export const timeConvert=(timeDt)=>{
   const minutes = timeDt.getMinutes().toString().padStart(2, '0');
   return `${hour}:${minutes}`;
 }
+
+export const localStorageReset=()=>{
+  localStorage.removeItem('orgMySectionList');
+  localStorage.removeItem('orgSectionList');
+  localStorage.removeItem('displayedSectionList');
+}

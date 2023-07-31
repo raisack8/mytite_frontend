@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import Login from '../LoginComponents/Login'
 import Register from '../LoginComponents/Register'
 import MenuModal from "../CmnComponents/MenuModal"
+import {localStorageReset} from "../utils"
 
 const Signin = () => {
 
-
   const [pageFlag, setPageFlag] = useState(0);
+  localStorageReset();
 
   return (
     <>

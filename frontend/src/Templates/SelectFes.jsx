@@ -3,8 +3,10 @@ import { Link, Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import SideDrawer from '../CmnComponents/SideDrawer'
 import MenuModal from "../CmnComponents/MenuModal"
+import {localStorageReset} from "../utils"
 
 const SelectFes = () => {
+  localStorageReset();
   return (
     <>
     <div className="fixed top-12 right-12">

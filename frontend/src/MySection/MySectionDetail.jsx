@@ -5,7 +5,8 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 
-const MySectionDetail = () => {
+const MySectionDetail = (props) => {
+  const { setPageFlag, wholeTime, setOpen } = props;
   const { id } = useParams();
   let userid = localStorage.getItem('userid');
 
@@ -99,7 +100,13 @@ const MySectionDetail = () => {
         return;
       }
       if(response.data.success!==""){
-        alert(response.data.success)
+        // 追加してコンポーネントチェンジ、と共にAPI RUN
+        let mySecList = localStorage.getItem('orgMySectionList');
+        let splitList = mySecList.split(',');
+        splitList.push(response.data.data)
+        localStorage.setItem('orgMySectionList', splitList);
+
+        setPageFlag(0)
         return;
       }
       // navigate('/');
@@ -252,13 +259,24 @@ const MySectionDetail = () => {
           />
         </div>
         <div className='p-2 flex justify-center'>
-          <Button variant="contained"
-          onClick={()=>checkInput()}
-          sx={{ width: '15ch', height: '7ch' }}
-          disabled={!userid}
-          >
-            登録
-          </Button>
+          <div>
+            <Button variant="outlined"
+            onClick={()=>setPageFlag(0)}
+            sx={{ width: '20ch', height: '5ch' }}
+            disabled={!userid}
+            >
+              予定一覧に戻る
+            </Button>
+          </div>
+          <div className='pl-3'>
+            <Button variant="contained"
+            onClick={()=>checkInput()}
+            sx={{ width: '10ch', height: '5ch' }}
+            disabled={!userid}
+            >
+              登録
+            </Button>
+          </div>
         </div>
       </div>
     </div>

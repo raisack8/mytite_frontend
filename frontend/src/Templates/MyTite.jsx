@@ -34,7 +34,7 @@ const MyTite = () => {
           sectionClickFlag={false}
         />
         <div className="fixed bottom-36 right-12">
-          <MySectionAddModal ></MySectionAddModal>
+          <MySectionAddModal wholeTime={data.wholeTime} ></MySectionAddModal>
         </div>
         <div className="fixed bottom-12 right-12">
           <MyTiteSave wholeTime={data.wholeTime}></MyTiteSave>

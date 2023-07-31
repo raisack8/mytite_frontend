@@ -6,6 +6,7 @@ import MyContext from '..';
 const MenuDetail = () => {
   const contextData = useContext(MyContext)
   const navigate  = useNavigate();
+  console.log(contextData);
   const menuItemStyle = {
     marginBottom: '5px',
   };
