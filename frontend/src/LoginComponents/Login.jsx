@@ -43,7 +43,6 @@ const Login = (props) => {
         id: loginId,
         password: password,
       };
-      console.log("POST : " + loginId);
       // POSTリクエストを送信
       const response = await axios.post(
         process.env.REACT_APP_DJANGO_API_URL+'/api/user_login/',
@@ -58,7 +57,7 @@ const Login = (props) => {
       localStorage.setItem('loginFlag', true);
       localStorage.setItem('userid', response.data.id);
       localStorage.setItem('username', response.data.username);
-      contextData.myTiteList = response.data.mytitelist
+      localStorage.setItem('myTiteList', response.data.mytitelist);
       navigate('/');
     } catch (error) {
       alert("システムエラーが発生しました")

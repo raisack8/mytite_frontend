@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import MyContext from '..';
+import axios from 'axios';
+import { wholeTime } from '../utils'
 
 
-const MenuDetail = () => {
+const MenuDetail = (props) => {
+  const { setOpen } = props;
   const contextData = useContext(MyContext)
   const navigate  = useNavigate();
-  console.log(contextData);
+  const { id } = useParams();
   const menuItemStyle = {
     marginBottom: '5px',
   };
@@ -15,11 +18,58 @@ const MenuDetail = () => {
     localStorage.removeItem('loginFlag');
     localStorage.removeItem('userid');
     localStorage.removeItem('username');
-    navigate('/');
+    localStorage.removeItem('myTiteList');
+    navigate('/signin');
   };
 
   let loginFlag = localStorage.getItem('loginFlag');
   let username = localStorage.getItem('username');
+  let myTiteList = localStorage.getItem('myTiteList');
+  if (myTiteList === undefined || myTiteList === null) {
+    myTiteList = ""; // データが存在しない場合は空文字列として初期化する
+  }
+  const myTiteArray = myTiteList.split(","); 
+
+  const getMyTite=async(myTiteId)=>{
+    try {
+      let userid = localStorage.getItem('userid');
+      let myTiteList = localStorage.getItem('myTiteList');
+      const dataToSend = {
+        my_tite_id: myTiteId,
+        user_id: userid,
+      };
+      // POSTリクエストを送信
+      const response = await axios.post(
+        process.env.REACT_APP_DJANGO_API_URL+'/api/my_tite_get/', 
+        dataToSend
+        );
+      console.log(response)
+      // 1つも選択していなかったらエラー
+      if(Object.keys(response.data.message.myTiteSections).length===0){
+        alert(response.data.message.errorMsg)
+        return;
+      }
+      // エラーメッセージが返されたら表示してreturn
+      if(response.data.message.errorMsg!==""){
+        alert(response.data.message.errorMsg)
+        return;
+      }
+      localStorage.setItem('orgSectionList', response.data.message.orgSectionList);
+      localStorage.setItem('orgMySectionList', response.data.message.orgMySectionList);
+      localStorage.setItem('displayedSectionList', response.data.message.displayedSectionList);
+      
+      navigate('/mytite/'+id,{state: {
+        'data':response.data,
+        'wholeTime':wholeTime,
+      }});
+      setOpen(false);
+      
+    } catch (error) {
+      alert("システムエラーが発生しました")
+      console.error('Error sending POST request:', error);
+    }
+  };
+
 
   return (
     <>
@@ -41,24 +91,27 @@ const MenuDetail = () => {
             トップメニュー
           </Link>
         </li>
-        <li className="text-slate-400">オススメタイテ</li>
+        <li className="text-slate-400">オススメタイテ(準備中)</li>
         <li className='py-1'>
-          <p>
-            マイタイテ
-          </p>
+          {myTiteArray[0] === '' && (
+          <p className='text-slate-400'>マイタイテ(登録されていません)</p>
+          )}
+          {myTiteArray[0] !== '' && (<p>マイタイテ</p>)}
         </li>
         <div>
           <ul>
-            {contextData.myTiteList.map((number, index) => (
-              <li key={number} className='py-1 pl-6 text-slate-400'>
-                <Link to={`/${number}`}>
-                  スロット{index + 1}
-                </Link>
-              </li>
-            ))}
+            {myTiteArray[0] === '' && (<li></li>)}
+            {myTiteArray[0] !== '' && (
+                myTiteArray.map((myTite, index) => (
+                  <li key={myTite} className='py-1 pl-6 cursor-pointer'
+                    onClick={() => getMyTite(myTite)}>
+                    スロット{index + 1}
+                  </li>
+                ))
+              )}
           </ul>
         </div>
-        <li className="text-slate-400">設定</li>
+        <li className="text-slate-400">設定(準備中)</li>
         {loginFlag === 'true' &&      
           <li onClick={()=>logout()}
             className='cursor-pointer py-2'>

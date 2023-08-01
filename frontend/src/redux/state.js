@@ -9,7 +9,6 @@ export const sectionOperate = createSlice({
     // この処理を作成したら自動的に内部にActionCreatorも作られる
     add:(state,section)=>{
       state.value.push(section.payload) ;
-      console.log(section.payload)
     },
     remove:(state)=>{
       state.value -= 1 ;

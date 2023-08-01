@@ -55,7 +55,6 @@ const Register = (props) => {
         id: loginId,
         password: password,
       };
-      console.log("POST : " + loginId);
       // POSTリクエストを送信
       const response = await axios.post(
         process.env.REACT_APP_DJANGO_API_URL+'/api/user_registration/',

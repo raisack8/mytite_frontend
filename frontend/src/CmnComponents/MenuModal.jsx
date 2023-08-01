@@ -41,7 +41,7 @@ export default function MenuModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <MenuDetail></MenuDetail>
+          <MenuDetail setOpen={setOpen}></MenuDetail>
         </Box>
       </Modal>
     </div>

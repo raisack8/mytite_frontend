@@ -1,5 +1,5 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { useLocation, useParams } from 'react-router-dom';
 import TimeLine from '../TiteComponents/TimeLine';
 import TimeTableArea from '../TiteComponents/TimeTableArea';
 import SideDrawer from '../CmnComponents/SideDrawer'
@@ -10,6 +10,19 @@ import MenuModal from "../CmnComponents/MenuModal"
 const MyTite = () => {
   const location = useLocation();
   const data = location.state;
+  const { id } = useParams();
+
+  useEffect(() => {
+    const handleGoBack = () => {
+      // ここに戻る処理を追加
+      // 特定のページに遷移させる例：'/specific-page'
+      window.location.href = '/tite/'+id;
+    };
+    window.addEventListener('popstate', handleGoBack);
+    return () => {
+      window.removeEventListener('popstate', handleGoBack);
+    };
+  }, []);
 
   const stageTest = [
     {id: 0, name: 'MyTite1', place: 'お台場', color: '#777777'},

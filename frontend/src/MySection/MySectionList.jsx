@@ -8,18 +8,19 @@ const MySectionList = (props) => {
   const { setPageFlag, wholeTime,  setOpen } = props;
   const contextData = useContext(MyContext)
   const navigate  = useNavigate();
+  const[mySecData, setMySecData] = useState([]);
 
   useEffect(() => {
     // Update the document title using the browser API
     postMySecIdList()
   },[]);
-  const[mySecData, setMySecData] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
     // Update the document title using the browser API
     postMySecIdList()
   },[setPageFlag]);
+
   // ++++++++++++++++++++++++++
   // 予定新規追加API
   // ++++++++++++++++++++++++++
@@ -37,7 +38,6 @@ const MySectionList = (props) => {
         alert(response.data.error)
         return;
       }
-      console.log(response.data.data)
       setMySecData(response.data.data);
       return;
       // navigate('/');
@@ -52,14 +52,14 @@ const MySectionList = (props) => {
   // ++++++++++++++++++++++++++
   const createMyTitePlusMySec=async(event)=>{
     try {
+
       const my_sec_id = event.target.id;
       let mySecList = localStorage.getItem('displayedSectionList');
-      console.log(mySecList)
       // let splitList = mySecList.split(',');
-      if(mySecList===null || mySecList===undefined){
-        localStorage.setItem('displayedSectionList', mySecList);
-      }else{
-        mySecList.push(mySecList)
+      if (mySecList === "") {
+        mySecList = my_sec_id;
+      } else {
+        mySecList += "," + my_sec_id;
       }
       
       let userid = localStorage.getItem('userid');
@@ -67,7 +67,7 @@ const MySectionList = (props) => {
         id: localStorage.getItem('orgSectionList'),
         fes_id: id,
         user_id: userid,
-        my_sec_list: my_sec_id,
+        my_sec_list: mySecList,
       };
       // POSTリクエストを送信
       const response = await axios.post(
@@ -89,15 +89,6 @@ const MySectionList = (props) => {
       localStorage.setItem('displayedSectionList', response.data.message.displayedSectionList);
       localStorage.setItem('orgMySectionList', response.data.message.orgMySectionList);
 
-      // let mySecList = localStorage.getItem('displayedSectionList');
-      // console.log(mySecList)
-      // // let splitList = mySecList.split(',');
-      // if(mySecList==null){
-      //   localStorage.setItem('displayedSectionList', response.data.data);
-      // }else{
-      //   mySecList.push(response.data.data)
-      // }
-      
       setOpen(false);
       navigate('/mytite/'+id,{state: {
         'data':response.data,
@@ -117,13 +108,17 @@ const MySectionList = (props) => {
         <span>追加したい予定を選択してください</span>
         <div className='w-full h-80 overflow-y-scroll border border-gray-300 rounded'>
           <ul>
-            {mySecData.map((item, index) => (
-              <li key={index} className='py-2 px-4 border-b border-gray-300 cursor-pointer'
-                id={item.id}
-                onClick={createMyTitePlusMySec}>
-                {item.display_end_time}~{item.display_start_time} {item.title} {item.id}
-              </li>
-            ))}
+            {mySecData.length === 0 && (<li>データはありません。</li>)}
+            {Object.keys(mySecData).length !== 0 && (
+                mySecData.map((item, index) => (
+                  <li key={index} className='py-2 px-4 border-b border-gray-300 cursor-pointer'
+                    id={item.id}
+                    onClick={createMyTitePlusMySec}>
+                    {item.display_end_time}~{item.display_start_time} {item.title} {item.id}
+                  </li>
+                ))
+              )}
+
           </ul>
         </div>
         <div className='p-2 flex justify-center'>

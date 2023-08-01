@@ -14,6 +14,10 @@
 
 //   return timeList;
 // }
+export const wholeTime = {
+  "start":new Date('1899-12-30T09:00:00'),
+  "end":new Date('1899-12-30T21:30:00'),
+}
 
 export const timeConvert=(timeDt)=>{
   const hour = timeDt.getHours().toString().padStart(2, '0');

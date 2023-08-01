@@ -8,7 +8,6 @@ const CreateBtn = ({wholeTime}) => {
   const contextData = useContext(MyContext)
   const navigate  = useNavigate();
   const { id } = useParams();
-  console.log(id)
   const createMyTite=async()=>{
     try {
       let userid = localStorage.getItem('userid');
@@ -36,6 +35,7 @@ const CreateBtn = ({wholeTime}) => {
       }
       localStorage.setItem('orgSectionList', response.data.message.orgSectionList);
       localStorage.setItem('orgMySectionList', response.data.message.orgMySectionList);
+      localStorage.setItem('displayedSectionList', '');
       
       navigate('/mytite/'+id,{state: {
         'data':response.data,

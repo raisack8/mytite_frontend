@@ -24,6 +24,19 @@ const Home = () => {
     getPosts();
   }, []);
 
+  useEffect(() => {
+    const handleGoBack = () => {
+      // ここに戻る処理を追加
+      // 特定のページに遷移させる例：'/specific-page'
+      window.location.href = '/';
+    };
+    window.addEventListener('popstate', handleGoBack);
+    return () => {
+      window.removeEventListener('popstate', handleGoBack);
+    };
+  }, []);
+
+
   // Homeコンポーネントが読み込まれた際、useContextの値をリセット
   let contextData = useContext(MyContext)
   contextData.sectionData = []

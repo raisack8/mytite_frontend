@@ -129,7 +129,7 @@ const MySectionDetail = (props) => {
     hour.push(item);
   }
   // 分オブジェクトに追加
-  for (let i = 5; i <= 55; i += 5) {
+  for (let i = 0; i <= 55; i += 5) {
     const paddedLabel = i.toString().padStart(2, '0');
     minute.push({
       value: i.toString(),

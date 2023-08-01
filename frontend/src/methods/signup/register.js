@@ -17,7 +17,6 @@ export function passwordValid(input, checkInput) {
 }
 
 export function errorCheck(loginInput, passInput, checkPassInput) {
-  console.log(loginInput)
   if (loginInput!=='' || passInput!=='' || checkPassInput!=='') {
     return true;
   }

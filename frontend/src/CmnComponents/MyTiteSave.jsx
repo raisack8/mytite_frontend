@@ -13,20 +13,16 @@ const MyTiteSave = ({wholeTime}) => {
 
   const saveMyTite=async()=>{
     try {
-      console.log("===============");
-      console.log(contextData.orgSectionList);
-      console.log(contextData.orgSectionList);
-      console.log(contextData.orgMySectionList);
-      
-      const mySecListStr = contextData.orgMySectionList.map(number => number.toString());
+      let orgSectionList = localStorage.getItem('orgSectionList');
+      let dispMySecList = localStorage.getItem('displayedSectionList');
       
       let userid = localStorage.getItem('userid');
       const dataToSend = {
         id: contextData.sectionData,
         fes_id: id,
         user_id: userid,
-        sec_list: contextData.orgSectionList,
-        my_sec_list: contextData.orgMySectionList,
+        sec_list: orgSectionList,
+        my_sec_list: dispMySecList,
       };
       // POSTリクエストを送信
       const response = await axios.post(
@@ -44,7 +40,18 @@ const MyTiteSave = ({wholeTime}) => {
         alert(response.data.error)
         return;
       }
-
+      let myTiteList = localStorage.getItem('myTiteList');
+      let list = []
+      if(myTiteList.includes(",")){
+        list = myTiteList.split(',')
+      }else{
+        if(myTiteList!==undefined && myTiteList!==null){
+          list.push(myTiteList)
+        }
+      }
+      list.push(response.data.modelid)
+      localStorage.setItem('myTiteList', list);
+      
       // navigate('/mytite',{state: {
       //   'data':response.data,
       //   'wholeTime':wholeTime,
