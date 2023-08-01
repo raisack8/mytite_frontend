@@ -8,15 +8,17 @@ const MyTiteSave = ({wholeTime}) => {
   const contextData = useContext(MyContext)
   const navigate  = useNavigate();
   const { id } = useParams();
-
-
+  let userid = localStorage.getItem('usrid');
 
   const saveMyTite=async()=>{
     try {
+      if(userid===null){
+        alert("ログインしてください")
+        return;
+      }
       let orgSectionList = localStorage.getItem('orgSectionList');
       let dispMySecList = localStorage.getItem('displayedSectionList');
       
-      let userid = localStorage.getItem('userid');
       const dataToSend = {
         id: contextData.sectionData,
         fes_id: id,

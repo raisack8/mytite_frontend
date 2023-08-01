@@ -11,7 +11,7 @@ const MyTite = () => {
   const location = useLocation();
   const data = location.state;
   const { id } = useParams();
-
+  
   useEffect(() => {
     const handleGoBack = () => {
       // ここに戻る処理を追加

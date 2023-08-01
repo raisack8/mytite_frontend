@@ -1,6 +1,8 @@
 import React, { useState,useContext } from 'react';
 // import { add } from '../redux/state';
 import MyContext from '..';
+import { handleLongPress } from '../utils';
+
 
 const Section = (props) => {
   const { section, sectionClickFlag } = props;
@@ -18,6 +20,12 @@ const Section = (props) => {
     contextVal.setSection(id);
   };
 
+  // 長押しのイベントハンドラを取得
+  const longPressEvent = handleLongPress((elementId) => {
+    console.log('長押しされました！');
+    console.log(elementId);
+    // モーダルを開く
+  });
 
   const notChoise = 'bg-white';
   const choiced = 'bg-red-200';
@@ -120,9 +128,15 @@ const Section = (props) => {
 
   
   return (
-    <div onClick={()=>toggleClickFlg(section.id)}>
-      {repeatedElements}
-    </div>
+    <>
+      <div onClick={()=>toggleClickFlg(section.id)}
+          id={section.id}
+          onMouseDown={() => longPressEvent.handleMouseDown(section)}
+          onMouseUp={longPressEvent.handleMouseUp}
+          >
+        {repeatedElements}
+      </div>
+    </>
   );
 };
 

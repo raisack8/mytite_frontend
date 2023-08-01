@@ -30,3 +30,26 @@ export const localStorageReset=()=>{
   localStorage.removeItem('orgSectionList');
   localStorage.removeItem('displayedSectionList');
 }
+
+// 長押し判定？
+export const handleLongPress = (callback) => {
+  let timerId;
+  let eventCopy; // イベントオブジェクトのコピーを保存する変数
+  
+  const handleMouseDown = (elementId, event) => {
+    eventCopy = { ...event }; // イベントオブジェクトのコピーを保存
+    timerId = setTimeout(() => {
+      callback(elementId, eventCopy); // 長押しイベントが発生したときにコールバックを実行し、保存したイベントオブジェクトを渡す
+    }, 1000); // 1000ms (1秒) で長押しとみなす
+  };
+  
+  const handleMouseUp = () => {
+    clearTimeout(timerId);
+  };
+  
+  return { handleMouseDown, handleMouseUp };
+};
+
+
+
+
