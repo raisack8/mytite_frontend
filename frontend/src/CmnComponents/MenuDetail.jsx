@@ -58,7 +58,7 @@ const MenuDetail = (props) => {
       localStorage.setItem('orgMySectionList', response.data.message.orgMySectionList);
       localStorage.setItem('displayedSectionList', response.data.message.displayedSectionList);
       
-      navigate('/mytite/'+id,{state: {
+      navigate('/mytiteslot/',{state: {
         'data':response.data,
         'wholeTime':wholeTime,
       }});
@@ -73,7 +73,7 @@ const MenuDetail = (props) => {
 
   return (
     <>
-     <div className='p-4 text-left w-full'>
+     <div className='p-4 text-left w-full text-2xl'>
       <ul className='d-none py-3'>
       
         <li className='py-3'>
@@ -83,7 +83,7 @@ const MenuDetail = (props) => {
             </Link>
             }
           {loginFlag === 'true' &&      
-            <p className='font-bold'>ようこそ！{username}さん</p>
+            <p className='font-bold text-3xl'>ようこそ！{username}さん</p>
             }
         </li>
         <li className='py-1'>

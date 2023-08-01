@@ -2,7 +2,14 @@ import React, { useState,useContext } from 'react';
 // import { add } from '../redux/state';
 import MyContext from '..';
 import { handleLongPress } from '../utils';
-
+import SectionExplanation from './SectionExplanation';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import ArtistDetails from './ArtistDetails'
+import ArtistEditPass from './ArtistEditPass'
+import ArtistEditAdmin from './ArtistEditAdmin'
 
 const Section = (props) => {
   const { section, sectionClickFlag } = props;
@@ -21,9 +28,9 @@ const Section = (props) => {
   };
 
   // 長押しのイベントハンドラを取得
-  const longPressEvent = handleLongPress((elementId) => {
-    console.log('長押しされました！');
-    console.log(elementId);
+  const longPressEvent = handleLongPress((element) => {
+    console.log(element);
+    handleOpen(element);
     // モーダルを開く
   });
 
@@ -59,12 +66,12 @@ const Section = (props) => {
                     alt={section.name}/>
                 </div>
               </div>)}
-              {!section.stage_img_url && (
+              {/* {(section.section_category==1 && (section.stage_img_url == "" ||section.stage_img_url == null)) && (
               <div className='ml-auto mr-0'>
-                <div className='w-20 h-4'>
-                  <p>{section.name}</p>
+                <div className='flex justify-end w-20 h-4 pr-4'>
+                  <p className='px-2 pb-4 text-xs border text-white bg-gray-500 border-gray-600 rounded'>Delete</p>
                 </div>
-              </div>)}
+              </div>)} */}
             </div>
           </div>
         </div>
@@ -126,7 +133,36 @@ const Section = (props) => {
     }
   });
 
-  
+
+  // Modal==========================
+  const [open, setOpen] = React.useState(false);
+  const [sectionDetails, setSectionDetails] = React.useState({});
+  const handleOpen = (section) => {
+    setSectionDetails(section);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setSectionDetails({})
+    setOpen(false);
+  };
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '90%',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    pt: 2,
+    px: 4,
+    pb: 3,
+    animation: 'fadeInOut 0.3s ease',
+    // display: 'flex',
+    // justifyContent: 'center'
+  };
+  const [modalDisplayMode, setModalDisplayMode] = useState(0);
+
   return (
     <>
       <div onClick={()=>toggleClickFlg(section.id)}
@@ -136,6 +172,34 @@ const Section = (props) => {
           >
         {repeatedElements}
       </div>
+      
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+    
+        <Box sx={{ ...style, width: '90%' }}>
+          {modalDisplayMode === 0 && <ArtistDetails 
+                                    setModalDisplayMode={setModalDisplayMode}
+                                    section={sectionDetails}
+                                    handleClose={handleClose}
+                                    />}
+          {modalDisplayMode === 1 && <ArtistEditPass 
+                                    setModalDisplayMode={setModalDisplayMode}
+                                    section={sectionDetails}
+                                    handleClose={handleClose}
+                                    />}
+          {modalDisplayMode === 2 && <ArtistEditAdmin 
+                                    setModalDisplayMode={setModalDisplayMode}
+                                    section={sectionDetails}
+                                    handleClose={handleClose}
+                                    />}
+
+          <Button onClick={handleClose}>Close</Button>
+        </Box>
+      </Modal>
     </>
   );
 };

@@ -5,6 +5,7 @@ import MenuModal from "../CmnComponents/MenuModal"
 import {localStorageReset} from "../utils"
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom'
+import UserInfo from '../LoginComponents/UserInfo'
 
 const Signin = () => {
 
@@ -22,6 +23,7 @@ const Signin = () => {
         <div className='w-full border border-slate-600 rounded'>
           {pageFlag === 0 && <Login setPageFlag={setPageFlag}/>}
           {pageFlag === 1 && <Register setPageFlag={setPageFlag}/>}
+          {pageFlag === 2 && <UserInfo setPageFlag={setPageFlag}/>}
 
           <div className='flex pb-4 justify-center'>
             <Button variant="outlined"

@@ -138,7 +138,7 @@ const MySectionDetail = (props) => {
   }
 
   return (
-    <div className='flex justify-center'>
+    <div className='flex justify-center text-2xl'>
       <div>
         <div className='text-xl p-4'>追加したい予定を登録してください</div>
         {!userid && <p className='py-3 text-red-600'>

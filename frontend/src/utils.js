@@ -40,7 +40,7 @@ export const handleLongPress = (callback) => {
     eventCopy = { ...event }; // イベントオブジェクトのコピーを保存
     timerId = setTimeout(() => {
       callback(elementId, eventCopy); // 長押しイベントが発生したときにコールバックを実行し、保存したイベントオブジェクトを渡す
-    }, 1000); // 1000ms (1秒) で長押しとみなす
+    }, 700); // 1000ms (1秒) で長押しとみなす
   };
   
   const handleMouseUp = () => {

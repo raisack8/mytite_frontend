@@ -86,7 +86,7 @@ const Login = (props) => {
         <div className='p-2 flex justify-center'>
           <TextField
             id="outlined-password-input"
-            label="Password"
+            label="パスワード"
             type="password"
             autoComplete="current-password"
             value={password}

@@ -14,7 +14,10 @@ const SelectFes = () => {
     </div>
     <div className='text-center'>
       <div className='mt-20'>
-
+        <div>
+          <h1 className='text-3xl font-mono'>マイタイテ</h1>
+          <h3 className='text-ms font-mono'>自分だけのタイムテーブルを作ろう</h3>
+        </div>
         <div className='m-4 w-4/5 mx-auto border border-slate-500'>
           <Link to="/tite/2">
             <img src={process.env.PUBLIC_URL + '/resources/tif/tif230804.jpg'} 

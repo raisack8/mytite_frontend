@@ -103,7 +103,7 @@ const MySectionList = (props) => {
 
 
   return (
-    <div className='flex justify-center'>
+    <div className='flex justify-center text-2xl'>
       <div className='w-full'>
         <span>追加したい予定を選択してください</span>
         <div className='w-full h-80 overflow-y-scroll border border-gray-300 rounded'>

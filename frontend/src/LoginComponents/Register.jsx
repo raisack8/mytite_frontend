@@ -70,7 +70,9 @@ const Register = (props) => {
       localStorage.setItem('userid', response.data.id);
       localStorage.setItem('username', response.data.username);
 
-      navigate('/');
+      // トップに戻る前にユーザー情報を決めてしまう
+      // navigate('/');
+      setPageFlag(2);
     } catch (error) {
       alert("システムエラーが発生しました")
       console.error('Error sending POST request:', error);
