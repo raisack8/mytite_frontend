@@ -42,13 +42,15 @@ const MyTiteSave = ({wholeTime}) => {
         alert(response.data.error)
         return;
       }
-      let myTiteList = localStorage.getItem('myTiteList');
       let list = []
-      if(myTiteList.includes(",")){
-        list = myTiteList.split(',')
-      }else{
-        if(myTiteList!==undefined && myTiteList!==null){
-          list.push(myTiteList)
+      let myTiteList = localStorage.getItem('myTiteList');
+      if(myTiteList!=null){
+        if(myTiteList.includes(",")){
+          list = myTiteList.split(',')
+        }else{
+          if(myTiteList!==undefined && myTiteList!==null){
+            list.push(myTiteList)
+          }
         }
       }
       list.push(response.data.modelid)

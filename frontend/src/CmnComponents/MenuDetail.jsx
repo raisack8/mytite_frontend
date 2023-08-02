@@ -73,7 +73,7 @@ const MenuDetail = (props) => {
 
   return (
     <>
-     <div className='p-4 text-left w-full text-2xl'>
+     <div className='p-4 text-left w-full text-xl'>
       <ul className='d-none py-3'>
       
         <li className='py-3'>
@@ -112,7 +112,7 @@ const MenuDetail = (props) => {
           </ul>
         </div>
         <li className=""
-        onClick={()=>navigate('/setting')}>設定(準備中)</li>
+        onClick={()=>navigate('/setting')}>設定</li>
         {loginFlag === 'true' &&      
           <li onClick={()=>logout()}
             className='cursor-pointer py-2'>

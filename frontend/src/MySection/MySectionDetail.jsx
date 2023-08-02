@@ -74,6 +74,7 @@ const MySectionDetail = (props) => {
       setEndTimeMinuteError('');
       setTitleError('');
       setExplainError('');
+
       mySectionRegistry();
     }  
   };
@@ -102,9 +103,18 @@ const MySectionDetail = (props) => {
       if(response.data.success!==""){
         // 追加してコンポーネントチェンジ、と共にAPI RUN
         let mySecList = localStorage.getItem('orgMySectionList');
+        console.log("============")
+        console.log(mySecList)
         let splitList = mySecList.split(',');
-        splitList.push(response.data.data)
-        localStorage.setItem('orgMySectionList', splitList);
+        let setItem = []
+        if(splitList[0]==''){
+          setItem.push(response.data.data)
+        }else{
+          splitList.push(response.data.data)
+          setItem = [...splitList];
+        }
+        localStorage.setItem('orgMySectionList', setItem);
+
 
         setPageFlag(0)
         return;
@@ -138,7 +148,7 @@ const MySectionDetail = (props) => {
   }
 
   return (
-    <div className='flex justify-center text-2xl'>
+    <div className='flex justify-center text-xl'>
       <div>
         <div className='text-xl p-4'>追加したい予定を登録してください</div>
         {!userid && <p className='py-3 text-red-600'>

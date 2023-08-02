@@ -15,6 +15,8 @@ const Home = () => {
   const[sections, setSections] = useState([]);
   // Stagesの値
   const[stages, setStages] = useState([]);
+  // Fes名
+  const[fesName, setFesName] = useState([]);
   const[error, setError] = useState('')
   const wholeTime = {
     "start":new Date('1899-12-30T09:00:00'),
@@ -22,12 +24,14 @@ const Home = () => {
   }
   useEffect(() => {
     getPosts();
+    let userid = localStorage.getItem('userid');
+    if(userid==null){
+      alert("ログインしないとマイタイテを保存できないので注意してください。")
+    }
   }, []);
 
   useEffect(() => {
     const handleGoBack = () => {
-      // ここに戻る処理を追加
-      // 特定のページに遷移させる例：'/specific-page'
       window.location.href = '/';
     };
     window.addEventListener('popstate', handleGoBack);
@@ -47,6 +51,9 @@ const Home = () => {
       await axios.get(process.env.REACT_APP_DJANGO_API_URL+'/api/api/?id='+id)
       .then(res1 => {
         setSections(res1.data);
+        setFesName(res1.fesName);
+        console.log(res1);
+        console.log(res1.data);
         axios.get(process.env.REACT_APP_DJANGO_API_URL+'/api/stages/?id='+id)
         .then(res2 => {
           setStages(res2.data);
@@ -59,6 +66,7 @@ const Home = () => {
       <div className="fixed top-12 right-12">
         <MenuModal></MenuModal>
       </div>
+      <div>{fesName}</div>
       <div className='m-8'>
         <div className="flex">
           <div style={{"paddingTop":"4.0rem"}}>

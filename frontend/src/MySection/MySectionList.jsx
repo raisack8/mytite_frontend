@@ -29,6 +29,9 @@ const MySectionList = (props) => {
       const dataToSend = {
         my_sec_list: localStorage.getItem('orgMySectionList'),
       };
+      console.log("===========")
+      console.log(localStorage.getItem('orgMySectionList'))
+
       // POSTリクエストを送信
       const response = await axios.post(
         process.env.REACT_APP_DJANGO_API_URL+'/api/my_section_get/',
@@ -104,7 +107,7 @@ const MySectionList = (props) => {
 
 
   return (
-    <div className='flex justify-center text-2xl'>
+    <div className='flex justify-center text-xl'>
       <div className='w-full'>
         <span>追加したい予定を選択してください</span>
         <div className='w-full h-80 overflow-y-scroll border border-gray-300 rounded'>

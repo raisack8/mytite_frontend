@@ -7,15 +7,22 @@ const SettingBasic = () => {
   const navigate  = useNavigate();
   const [pageFlag, setPageFlag] = useState(0);
   return (
-    <div>
-      <Button variant="outlined"
-        onClick={()=>navigate('/')}>
-        トップに戻る
-      </Button>
-      <Button variant="outlined"
-        onClick={()=>setPageFlag(1)}>
-        プライバシーポリシー
-      </Button>
+    <div className='p-8'>
+      <div>
+        まだ準備中です。。。
+      </div>
+      <div className='p-2'>
+        <Button variant="outlined"
+          onClick={()=>navigate('/')}>
+          トップに戻る
+        </Button>
+      </div>
+      <div className='p-2'>
+        <Button variant="outlined"
+          onClick={()=>setPageFlag(1)}>
+          プライバシーポリシー
+        </Button>
+      </div>
 
     {pageFlag === 1 && <PlivacyPolicy setPageFlag={setPageFlag}/>}
     {/* {pageFlag === 2 && <UserInfo setPageFlag={setPageFlag}/>} */}

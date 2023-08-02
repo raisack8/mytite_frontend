@@ -116,7 +116,7 @@ const Section = (props) => {
           key={index}>
           <div className='mx-1 text-sm'>
             <div className='flex'>
-              <p>{startTime}~{endTimeString}</p>
+              <p className='text-sky-600'>{startTime}~{endTimeString}</p>
               {section.stage_img_url && (
               <div className='ml-auto mr-0'>
                 <div className='w-20 h-4'>
