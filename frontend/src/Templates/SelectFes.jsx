@@ -21,7 +21,7 @@ const SelectFes = () => {
         <div className='p-2'>
           <p>チュートリアル動画</p>
           <div className=''>
-          <iframe width="780" height="500" className='mr-auto ml-auto' 
+          <iframe width="260" height="170" className='mr-auto ml-auto' 
           src="https://www.youtube.com/embed/LQ4o5p4QAqA" 
           title="YouTube video player" 
           frameborder="0" 
