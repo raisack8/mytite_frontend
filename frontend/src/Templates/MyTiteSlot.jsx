@@ -30,19 +30,21 @@ const MyTiteSlot = () => {
 
   return (
     <>
-      <div className="fixed top-12 right-12">
-        <MenuModal></MenuModal>
-      </div>
-      <div className="flex m-8">
-        <div style={{"paddingTop":"4.0rem"}}>
-          <TimeLine wholeTime={data.wholeTime}/>
+      <div className='p-8'>
+        <div className="fixed top-12 right-12">
+          <MenuModal></MenuModal>
         </div>
-        <TimeTableArea 
-          stages={stageTest} 
-          sections={data.data.message.myTiteSections} 
-          wholeTime={data.wholeTime}
-          sectionClickFlag={false}
-        />
+        <div className="flex m-8">
+          <div style={{"paddingTop":"4.0rem"}}>
+            <TimeLine wholeTime={data.wholeTime}/>
+          </div>
+          <TimeTableArea 
+            stages={stageTest} 
+            sections={data.data.message.myTiteSections} 
+            wholeTime={data.wholeTime}
+            sectionClickFlag={false}
+            />
+        </div>
       </div>
     </>
   )

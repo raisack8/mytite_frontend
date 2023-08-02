@@ -118,7 +118,7 @@ const MySectionList = (props) => {
                   <li key={index} className='py-2 px-4 border-b border-gray-300 cursor-pointer'
                     id={item.id}
                     onClick={createMyTitePlusMySec}>
-                    {item.display_end_time}~{item.display_start_time} {item.title} {item.id}
+                    {item.display_start_time}~{item.display_end_time} {item.title}
                   </li>
                 ))
               )}
