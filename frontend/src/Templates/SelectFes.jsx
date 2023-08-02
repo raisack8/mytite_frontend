@@ -16,7 +16,18 @@ const SelectFes = () => {
       <div className='mt-20'>
         <div>
           <h1 className='text-3xl font-mono'>マイタイテ</h1>
-          <h3 className='text-ms font-mono'>自分だけのタイムテーブルを作ろう</h3>
+          <h3 className='text-lg'>自分だけのタイムテーブルを作ろう</h3>
+        </div>
+        <div className='p-2'>
+          <p>チュートリアル動画</p>
+          <div className=''>
+          <iframe width="780" height="500" className='mr-auto ml-auto' 
+          src="https://www.youtube.com/embed/LQ4o5p4QAqA" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen></iframe>
+          </div>
         </div>
         <div className='m-4 w-3/5 mx-auto border border-slate-500'>
           <Link to="/tite/2">

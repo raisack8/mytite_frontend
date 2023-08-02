@@ -111,8 +111,8 @@ const MenuDetail = (props) => {
               )}
           </ul>
         </div>
-        <li className=""
-        onClick={()=>navigate('/setting')}>設定</li>
+        <li className="pt-8"
+        onClick={()=>navigate('/setting')}>その他</li>
         {loginFlag === 'true' &&      
           <li onClick={()=>logout()}
             className='cursor-pointer py-2'>
