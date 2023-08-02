@@ -5,6 +5,7 @@ import MyTiteSlot from "./Templates/MyTiteSlot";
 import SelectFes from "./Templates/SelectFes";
 import Signin from "./Templates/Signin";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SettingBasic from "./SettingPage/SettingBasic";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/mytite/:id" element={<MyTite/>} />
           <Route path="/mytiteslot" element={<MyTiteSlot/>} />
           <Route path="/signin" element={<Signin/>} />
+          <Route path="/setting" element={<SettingBasic/>} />
       </Routes>
     </Router>
   );

@@ -230,34 +230,37 @@ const MySectionDetail = (props) => {
             </TextField>
           </div>
         </div>
-        <div className='p-2'>
+        <div className='justify-center'>
+          <div className='py-2 px-12'>
 
-          <TextField
-            id="outlined-password-input"
-            label="予定名"
-            autoComplete="current-password"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)} 
-            type='text'
-            helperText={titleError}
-            error={titleError? true:false}
-            sx={{ width: 'auto', maxWidth: '40ch' }}
-            required
+            <TextField
+              id="outlined-password-input"
+              label="予定名"
+              autoComplete="current-password"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)} 
+              type='text'
+              helperText={titleError}
+              error={titleError? true:false}
+              sx={{ width: '100%'}}
+              required
+              />
+          </div>
+          <div className='py-2 px-12'>
+            <TextField
+              id="outlined-multiline-static"
+              label="説明(任意)"
+              multiline
+              rows={4}
+              value={explain}
+              onChange={(e) => setExplain(e.target.value)} 
+              helperText={explainError}
+              error={explainError? true:false}
+              sx={{ width: '100%' }}
             />
+          </div>
         </div>
-        <div className='p-2'>
-          <TextField
-            id="outlined-multiline-static"
-            label="説明(任意)"
-            multiline
-            rows={4}
-            value={explain}
-            onChange={(e) => setExplain(e.target.value)} 
-            helperText={explainError}
-            error={explainError? true:false}
-            sx={{ width: 'auto', maxWidth: '40ch' }}
-          />
-        </div>
+
         <div className='p-2 flex justify-center'>
           <div>
             <Button variant="outlined"

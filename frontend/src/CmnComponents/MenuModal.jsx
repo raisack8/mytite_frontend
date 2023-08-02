@@ -18,7 +18,8 @@ const style = {
   p: 4,
 };
 
-export default function MenuModal() {
+export default function MenuModal(props) {
+  const {padding} = props
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -29,8 +30,9 @@ export default function MenuModal() {
         className="border border-blue-500 bg-blue-500 text-white 
           hover:bg-blue-700
           focus:ring-4 focus:outline-none focus:ring-blue-300 
-          font-medium rounded-full text-sm p-5 text-center 
+          font-medium rounded-full text-sm text-center 
           inline-flex items-center"
+        style={padding?{padding:padding}:{padding:'1.5rem'}}
         onClick={()=>handleOpen()}>
         <span className='p-2 text-xl'>MENU</span>
       </button>

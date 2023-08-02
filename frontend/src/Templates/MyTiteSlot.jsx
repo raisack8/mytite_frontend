@@ -13,7 +13,7 @@ const MyTiteSlot = () => {
     const handleGoBack = () => {
       // ここに戻る処理を追加
       // 特定のページに遷移させる例：'/specific-page'
-      window.location.href = '/tite/'+id;
+      window.location.href = '/';
     };
     window.addEventListener('popstate', handleGoBack);
     return () => {

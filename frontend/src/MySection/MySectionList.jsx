@@ -68,6 +68,7 @@ const MySectionList = (props) => {
         fes_id: id,
         user_id: userid,
         my_sec_list: mySecList,
+        delete_flag: true,
       };
       // POSTリクエストを送信
       const response = await axios.post(

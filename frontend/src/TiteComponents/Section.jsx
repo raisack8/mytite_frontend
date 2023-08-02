@@ -10,9 +10,14 @@ import Modal from '@mui/material/Modal';
 import ArtistDetails from './ArtistDetails'
 import ArtistEditPass from './ArtistEditPass'
 import ArtistEditAdmin from './ArtistEditAdmin'
+import axios from 'axios';
+import { wholeTime } from '../utils'
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Section = (props) => {
   const { section, sectionClickFlag } = props;
+  const navigate  = useNavigate();
+  const { id } = useParams();
 
   const [clickFlg, setClickFlg] = useState(false);
   const contextVal = useContext(MyContext)
@@ -25,6 +30,59 @@ const Section = (props) => {
     setClickFlg(!clickFlg);
     // Contextに値を登録する
     contextVal.setSection(id);
+  };
+
+  // DELETEボタンを押下時の処理
+  const deleteMySec = async(mySecId) => {
+    try {
+      // ローカルストレージから押下したマイセクidを削除する
+      let mySecList = localStorage.getItem('displayedSectionList');
+      if(mySecList.includes(',')){
+        console.log("==========")
+        console.log(mySecId)
+        const stringArray = mySecList.split(',');
+        console.log(stringArray)
+        const filteredArray = stringArray.filter(item => item !== String(mySecId));
+        console.log(filteredArray)
+        mySecList = filteredArray.join(',');
+        console.log(mySecList)
+      }else{
+        // カンマがない場合は消す対象のマイセクしかないものと考える
+        mySecList=''
+      }
+      
+      let userid = localStorage.getItem('userid');
+      const dataToSend = {
+        id: localStorage.getItem('orgSectionList'),
+        fes_id: id,
+        user_id: userid,
+        my_sec_list: mySecList,
+        delete_flag: true,
+      };
+      // POSTリクエストを送信
+      const response = await axios.post(
+        process.env.REACT_APP_DJANGO_API_URL+'/api/api/', 
+        dataToSend
+        );
+      console.log(response)
+      // エラーメッセージが返されたら表示してreturn
+      if(response.data.message.errorMsg!==""){
+        alert(response.data.message.errorMsg)
+        return;
+      }
+      localStorage.setItem('orgSectionList', response.data.message.orgSectionList);
+      localStorage.setItem('displayedSectionList', response.data.message.displayedSectionList);
+      localStorage.setItem('orgMySectionList', response.data.message.orgMySectionList);
+
+      navigate('/mytite/'+id,{state: {
+        'data':response.data,
+        'wholeTime':wholeTime,
+      }});
+
+    } catch (error) {
+      alert("システムエラーが発生しました")
+      console.error('Error sending POST request:', error);
+    }
   };
 
   // 長押しのイベントハンドラを取得
@@ -66,12 +124,14 @@ const Section = (props) => {
                     alt={section.name}/>
                 </div>
               </div>)}
-              {/* {(section.section_category==1 && (section.stage_img_url == "" ||section.stage_img_url == null)) && (
+              {/* DELETEボタン */}
+              {section.delete_flag===true && (
               <div className='ml-auto mr-0'>
-                <div className='flex justify-end w-20 h-4 pr-4'>
+                <div className='flex justify-end w-20 h-4 pr-4'
+                  onClick={()=>deleteMySec(section.id)}>
                   <p className='px-2 pb-4 text-xs border text-white bg-gray-500 border-gray-600 rounded'>Delete</p>
                 </div>
-              </div>)} */}
+              </div>)}
             </div>
           </div>
         </div>
@@ -169,6 +229,8 @@ const Section = (props) => {
           id={section.id}
           onMouseDown={() => longPressEvent.handleMouseDown(section)}
           onMouseUp={longPressEvent.handleMouseUp}
+          onTouchStart={() => longPressEvent.handleMouseDown(section)}
+          onTouchEnd={longPressEvent.handleMouseUp}
           >
         {repeatedElements}
       </div>
