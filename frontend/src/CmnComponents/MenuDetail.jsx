@@ -111,7 +111,7 @@ const MenuDetail = (props) => {
               )}
           </ul>
         </div>
-        <li className="pt-8"
+        <li className="pt-8 cursor-pointer"
         onClick={()=>navigate('/setting')}>その他</li>
         {loginFlag === 'true' &&      
           <li onClick={()=>logout()}

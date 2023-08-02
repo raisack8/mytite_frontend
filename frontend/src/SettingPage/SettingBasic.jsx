@@ -23,6 +23,12 @@ const SettingBasic = () => {
           プライバシーポリシー
         </Button>
       </div>
+      <div className='p-2'>
+        <Button variant="outlined"
+          onClick={()=>navigate('/admin')}>
+          プライバシーポリシー
+        </Button>
+      </div>
 
     {pageFlag === 1 && <PlivacyPolicy setPageFlag={setPageFlag}/>}
     {/* {pageFlag === 2 && <UserInfo setPageFlag={setPageFlag}/>} */}

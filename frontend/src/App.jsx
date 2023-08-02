@@ -6,6 +6,7 @@ import SelectFes from "./Templates/SelectFes";
 import Signin from "./Templates/Signin";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SettingBasic from "./SettingPage/SettingBasic";
+import AdminLogin from "./Admin/AdminLogin"
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/mytiteslot" element={<MyTiteSlot/>} />
           <Route path="/signin" element={<Signin/>} />
           <Route path="/setting" element={<SettingBasic/>} />
+          <Route path="/admin" element={<AdminLogin/>} />
       </Routes>
     </Router>
   );
