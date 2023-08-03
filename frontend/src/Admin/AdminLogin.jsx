@@ -8,7 +8,7 @@ const AdminLogin = () => {
   
   // pageCount=0:管理者ログイン
   // pageCount=1:オペレーションリスト
-  const [pageCount, setPageCount] = useState(9);
+  const [pageCount, setPageCount] = useState(0);
 
 
   const setPassword = (input) => {
