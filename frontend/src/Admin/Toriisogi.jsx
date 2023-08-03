@@ -281,10 +281,10 @@ const Toriisogi = (props) => {
         <TextField label="Isnta ID" value={instaId}
           onChange={(e) => setInstaId(e.target.value)} 
         />
-        <TextField label="フェスID" value={stageId} className='bg-amber-100'
+        <TextField label="フェスID" value={fesIdIdForSection} className='bg-amber-100'
           onChange={(e) => setFesIdIdForSection(e.target.value)} 
         />
-        <TextField label="ステージID" value={stageId} className='bg-amber-100'
+        <TextField label="ステージID" value={stageIdforSection} className='bg-amber-100'
           onChange={(e) => setStageIdforSection(e.target.value)} 
         />
         <Button variant="outlined"
