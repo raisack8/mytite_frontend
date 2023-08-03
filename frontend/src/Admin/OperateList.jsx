@@ -6,7 +6,7 @@ export const OperateList = (props) => {
   const {setPageCount} = props
 
   const dbButtonClick=()=>{
-    setPageCount(2);
+    setPageCount(9);
   }
 
   return (
