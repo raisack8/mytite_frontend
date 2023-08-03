@@ -31,7 +31,7 @@ const SelectFes = () => {
           allowfullscreen></iframe>
           </div>
         </div>
-        <div>
+        {/* <div>
             <div className='m-4 w-3/5 mx-auto border border-slate-500'>
             <Link to="/tite/5">
               <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230805.png'} 
@@ -44,7 +44,7 @@ const SelectFes = () => {
                 alt="ROCK IN JAPAN FES.2023 0806" />
             </Link>
           </div>
-        </div>
+        </div> */}
 
         <div className='m-4 w-3/5 mx-auto border border-slate-500'>
           <Link to="/tite/2">
