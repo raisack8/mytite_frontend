@@ -33,7 +33,11 @@ const SettingBasic = () => {
     {pageFlag === 1 && <PlivacyPolicy setPageFlag={setPageFlag}/>}
     {/* {pageFlag === 2 && <UserInfo setPageFlag={setPageFlag}/>} */}
 
-
+      <div className='text-red-500'>
+        <div>フェスに間に合わせようと横着して簡易的なデータベース、sqliteにてDBを保管してしまっています。</div>
+        <div>デブロイするとデータ飛んでしまうんですね。</div>
+        <div>なのでフェスが終わったら保存したデータは消えてしまいます。</div>
+      </div>
     </div>
   )
 }

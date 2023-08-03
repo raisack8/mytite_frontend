@@ -143,6 +143,56 @@ const Toriisogi = (props) => {
       }
     };
 
+  const fesDeleteClite=(id)=>{
+    clickFesDelete(id);
+  }
+
+  const stageDeleteClite=(id)=>{
+    clickStageDelete(id);
+  }
+
+  const sectionDeleteClite=(id)=>{
+    clickSectionDelete(id);
+  }
+
+  const clickFesDelete=async(id)=>{
+    try {
+      const dataToSend = {id: id,};
+      const response = await axios.post(
+        process.env.REACT_APP_DJANGO_API_URL+'/api/fes_delete/', 
+        dataToSend
+        );
+      alert("削除しました");
+    } catch (error) {
+      alert("システムエラーが発生しました")
+    }
+  }
+
+  const clickStageDelete=async(id)=>{
+    try {
+      const dataToSend = {id: id,};
+      const response = await axios.post(
+        process.env.REACT_APP_DJANGO_API_URL+'/api/stage_delete/', 
+        dataToSend
+        );
+      alert("削除しました");
+    } catch (error) {
+      alert("システムエラーが発生しました")
+    }
+  }
+
+  const clickSectionDelete=async(id)=>{
+    try {
+      const dataToSend = {id: id,};
+      const response = await axios.post(
+        process.env.REACT_APP_DJANGO_API_URL+'/api/section_delete/', 
+        dataToSend
+        );
+      alert("削除しました");
+    } catch (error) {
+      alert("システムエラーが発生しました")
+    }
+  }
 
   return (
     <div>
@@ -249,17 +299,27 @@ const Toriisogi = (props) => {
       <p>------------fes一覧-----------------</p>
       {allFes &&(
         Object.values(allFes).map((fes) => (
-            <p key={fes.id}>{fes.id}, {fes.name}, {fes.year}, {fes.event_date}</p>
+            <p key={fes.id}>
+              <span className='border border-black mr-2 cursor-pointer'
+                onClick={()=>fesDeleteClite(fes.id)}>削除</span>
+              {fes.id}, {fes.name}, {fes.year}, {fes.event_date}
+              </p>
           )))}
       <p>------------Stage一覧-----------------</p>
       {allStage &&(
-        Object.values(allStage).map((fes) => (
-            <p key={fes.id}>{fes.id}, stage_id:{fes.stage_id}, {fes.name}, {fes.color}, {fes.stage_image_path1}</p>
+        Object.values(allStage).map((stage) => (
+            <p key={stage.id}>
+              <span className='border border-black mr-2 cursor-pointer'
+                onClick={()=>stageDeleteClite(stage.id)}>削除</span>
+              {stage.id}, stage_id:{stage.stage_id}, {stage.name}, {stage.color}, {stage.stage_image_path1}</p>
           )))}
       <p>------------Section一覧-----------------</p>
       {allSection &&(
-        Object.values(allSection).map((fes) => (
-            <p key={fes.id}>{fes.id}, fes_id:{fes.fes_id}, stage_id:{fes.stage}, {fes.artist_name}, {fes.other2}</p>
+        Object.values(allSection).map((sec) => (
+            <p key={sec.id}>
+              <span className='border border-black mr-2 cursor-pointer'
+                onClick={()=>sectionDeleteClite(sec.id)}>削除</span>
+              {sec.id}, fes_id:{sec.fes_id}, stage_id:{sec.stage}, {sec.artist_name}, {sec.other2}</p>
           )))}
       </div>
     </div>

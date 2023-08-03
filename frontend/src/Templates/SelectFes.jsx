@@ -31,7 +31,8 @@ const SelectFes = () => {
           allowfullscreen></iframe>
           </div>
         </div>
-        {/* <div>
+        <p>保存したマイタイテはフェスが終わったら消える刹那のものです。</p>
+        <div>
             <div className='m-4 w-3/5 mx-auto border border-slate-500'>
             <Link to="/tite/5">
               <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230805.png'} 
@@ -44,7 +45,7 @@ const SelectFes = () => {
                 alt="ROCK IN JAPAN FES.2023 0806" />
             </Link>
           </div>
-        </div> */}
+        </div>
 
         <div className='m-4 w-3/5 mx-auto border border-slate-500'>
           <Link to="/tite/2">
@@ -66,29 +67,25 @@ const SelectFes = () => {
               alt="TIF2023 0806" />
           </Link>
         </div>
-        {username==='testuser' &&(
-          <div>
-              <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-              <Link to="/tite/7">
-                <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230811.png'} 
-                  alt="ROCK IN JAPAN FES.2023 0811" />
-              </Link>
-            </div>
-            <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-              <Link to="/tite/8">
-                <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230812.png'} 
-                  alt="ROCK IN JAPAN FES.2023 0812" />
-              </Link>
-            </div>
-            <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-              <Link to="/tite/9">
-                <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230813.png'} 
-                  alt="ROCK IN JAPAN FES.2023 0813" />
-              </Link>
-            </div>
-          </div>
-        )}
-      </div>
+        <div className='m-4 w-3/5 mx-auto border border-slate-500'>
+          <Link to="/tite/7">
+            <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230811.png'} 
+              alt="ROCK IN JAPAN FES.2023 0811" />
+          </Link>
+        </div>
+        <div className='m-4 w-3/5 mx-auto border border-slate-500'>
+          <Link to="/tite/8">
+            <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230812.png'} 
+              alt="ROCK IN JAPAN FES.2023 0812" />
+          </Link>
+        </div>
+        <div className='m-4 w-3/5 mx-auto border border-slate-500'>
+          <Link to="/tite/9">
+            <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230813.png'} 
+              alt="ROCK IN JAPAN FES.2023 0813" />
+          </Link>
+        </div>
+       </div>
       <Routes>
         <Route path="/tite/:id" component={Home} />
       </Routes>
