@@ -45,22 +45,6 @@ const SelectFes = () => {
             </Link>
           </div>
         </div>
-        {username==='testuser' &&(
-          <div>
-              <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-              <Link to="/tite/7">
-                <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230807.png'} 
-                  alt="ROCK IN JAPAN FES.2023 0807" />
-              </Link>
-            </div>
-            <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-              <Link to="/tite/8">
-                <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230808.png'} 
-                  alt="ROCK IN JAPAN FES.2023 0808" />
-              </Link>
-            </div>
-          </div>
-        )}
 
         <div className='m-4 w-3/5 mx-auto border border-slate-500'>
           <Link to="/tite/2">
@@ -82,7 +66,28 @@ const SelectFes = () => {
               alt="TIF2023 0806" />
           </Link>
         </div>
-
+        {username==='testuser' &&(
+          <div>
+              <div className='m-4 w-3/5 mx-auto border border-slate-500'>
+              <Link to="/tite/7">
+                <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230811.png'} 
+                  alt="ROCK IN JAPAN FES.2023 0811" />
+              </Link>
+            </div>
+            <div className='m-4 w-3/5 mx-auto border border-slate-500'>
+              <Link to="/tite/8">
+                <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230812.png'} 
+                  alt="ROCK IN JAPAN FES.2023 0812" />
+              </Link>
+            </div>
+            <div className='m-4 w-3/5 mx-auto border border-slate-500'>
+              <Link to="/tite/9">
+                <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230813.png'} 
+                  alt="ROCK IN JAPAN FES.2023 0813" />
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
       <Routes>
         <Route path="/tite/:id" component={Home} />
