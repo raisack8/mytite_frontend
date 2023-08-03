@@ -34,7 +34,7 @@ const SelectFes = () => {
         {username==='testuser' &&(
           <div>
               <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-              <Link to="/tite/8">
+              <Link to="/tite/5">
                 <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230805.png'} 
                   alt="ROCK IN JAPAN FES.2023 0805" />
               </Link>
