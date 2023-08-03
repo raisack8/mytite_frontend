@@ -6,6 +6,8 @@ import MenuModal from "../CmnComponents/MenuModal"
 import {localStorageReset} from "../utils"
 
 const SelectFes = () => {
+  let username = localStorage.getItem('username');
+
   localStorageReset();
   return (
     <>
@@ -29,6 +31,23 @@ const SelectFes = () => {
           allowfullscreen></iframe>
           </div>
         </div>
+        {username==='testuser' &&(
+          <div>
+              <div className='m-4 w-3/5 mx-auto border border-slate-500'>
+              <Link to="/tite/8">
+                <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230805.png'} 
+                  alt="ROCK IN JAPAN FES.2023 0805" />
+              </Link>
+            </div>
+            <div className='m-4 w-3/5 mx-auto border border-slate-500'>
+              <Link to="/tite/6">
+                <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230806.png'} 
+                  alt="ROCK IN JAPAN FES.2023 0806" />
+              </Link>
+            </div>
+          </div>
+        )}
+
         <div className='m-4 w-3/5 mx-auto border border-slate-500'>
           <Link to="/tite/2">
             <img src={process.env.PUBLIC_URL + '/resources/tif/tif230804.jpg'} 

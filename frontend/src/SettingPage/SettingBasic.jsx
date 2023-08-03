@@ -26,7 +26,7 @@ const SettingBasic = () => {
       <div className='p-2'>
         <Button variant="outlined"
           onClick={()=>navigate('/admin')}>
-          プライバシーポリシー
+          管理者ページ
         </Button>
       </div>
 
