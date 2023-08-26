@@ -32,20 +32,6 @@ const SelectFes = () => {
           </div>
         </div>
         <p>保存したマイタイテはフェスが終わったら消える刹那のものです。</p>
-        <div>
-            <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-            <Link to="/tite/5">
-              <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230805.png'} 
-                alt="ROCK IN JAPAN FES.2023 0805" />
-            </Link>
-          </div>
-          <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-            <Link to="/tite/6">
-              <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230806.png'} 
-                alt="ROCK IN JAPAN FES.2023 0806" />
-            </Link>
-          </div>
-        </div>
 
         <div className='m-4 w-3/5 mx-auto border border-slate-500'>
           <Link to="/tite/2">
@@ -65,24 +51,6 @@ const SelectFes = () => {
           <Link to="/tite/4">
             <img src={process.env.PUBLIC_URL + '/resources/tif/tif230806.jpg'} 
               alt="TIF2023 0806" />
-          </Link>
-        </div>
-        <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-          <Link to="/tite/7">
-            <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230811.png'} 
-              alt="ROCK IN JAPAN FES.2023 0811" />
-          </Link>
-        </div>
-        <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-          <Link to="/tite/8">
-            <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230812.png'} 
-              alt="ROCK IN JAPAN FES.2023 0812" />
-          </Link>
-        </div>
-        <div className='m-4 w-3/5 mx-auto border border-slate-500'>
-          <Link to="/tite/9">
-            <img src={process.env.PUBLIC_URL + '/resources/rockin2023/rockin230813.png'} 
-              alt="ROCK IN JAPAN FES.2023 0813" />
           </Link>
         </div>
        </div>
