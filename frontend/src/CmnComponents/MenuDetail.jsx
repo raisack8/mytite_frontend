@@ -91,7 +91,6 @@ const MenuDetail = (props) => {
             トップメニュー
           </Link>
         </li>
-        <li className="text-slate-400">オススメタイテ(準備中)</li>
         <li className='py-1'>
           {myTiteArray[0] === '' && (
           <p className='text-slate-400'>マイタイテ(登録されていません)</p>
@@ -112,7 +111,8 @@ const MenuDetail = (props) => {
           </ul>
         </div>
         <li className="pt-8 cursor-pointer"
-        onClick={()=>navigate('/setting')}>その他</li>
+        onClick={()=>navigate('/setting')}
+        style={{ visibility: "hidden" }}>その他</li>
         {loginFlag === 'true' &&      
           <li onClick={()=>logout()}
             className='cursor-pointer py-2'>

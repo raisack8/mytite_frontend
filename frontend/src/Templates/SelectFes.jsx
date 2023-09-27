@@ -31,7 +31,6 @@ const SelectFes = () => {
           allowfullscreen></iframe>
           </div>
         </div>
-        <p>保存したマイタイテはフェスが終わったら消える刹那のものです。</p>
 
         <div className='m-4 w-3/5 mx-auto border border-slate-500'>
           <Link to="/tite/2">
