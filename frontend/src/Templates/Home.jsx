@@ -46,7 +46,7 @@ const Home = () => {
   contextData.sectionData = []
 
   const iFesId = id
-  // DjangoのAPIと通信するメソッド
+  // DjangoのAPIと通信するメソッド..
   const getPosts = async () => {
       await axios.get(process.env.REACT_APP_DJANGO_API_URL+'/api/api/?id='+id)
       .then(res1 => {
